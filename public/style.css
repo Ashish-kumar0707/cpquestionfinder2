@@ -91,6 +91,12 @@ nav header ul li a
         background-color: #e2188b;
         cursor: pointer;
 }
+.loading
+{
+        margin-top: 10px;
+        color: white;
+        font-size: 30px;
+}
 
 .title
 {

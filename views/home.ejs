@@ -34,56 +34,27 @@
                     <!-- <button onclick="func1()" type="button" id="btn" name="button">Search</button> -->
                 </form>
             </div>
-            <div class="loading"></div>
+            <div class="loading"> </div>
             <qtn>
                 <div class="question">
                     <div class="title"></div>
-                    <div class="url">
-                        <a href=""></a>
-                    </div>
-                    <div class="link">
 
-                    </div>
-                    <div class="body"></div>
                 </div>
                 <div class="question">
                     <div class="title"></div>
-                    <div class="url">
-                        <a href=""></a>
-                    </div>
-                    <div class="link">
 
-                    </div>
-                    <div class="body"></div>
                 </div>
                 <div class="question">
                     <div class="title"></div>
-                    <div class="url">
-                        <a href=""></a>
-                    </div>
-                    <div class="link">
 
-                    </div>
-                    <div class="body"></div>
                 </div>
                 <div class="question">
                     <div class="title"></div>
-                    <div class="url">
-                        <a href=""></a>
-                    </div>
-                    <div class="link">
 
-                    </div>
-                    <div class="body"></div>
                 </div>
                 <div class="question">
                     <div class="title"></div>
-                    <div class="url">
-                        <a href=""></a>
-                    </div>
-                    <div class="link"></div>
-                    <!-- <a class="link"  href="">click here</a> -->
-                    <div class="body"></div>
+
                 </div>
             </qtn>
         </div>
@@ -107,36 +78,44 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const quest = qelment.value;
-        loadingdiv.innerHTML = `<h3>Loading......</h3>`;
+        loadingdiv[0].innerHTML = `<h3>Loading......</h3>`;
+        // loadingdiv[0].innerHTML = `<a target="_blank" href=""> Problem : </a>`;
         for (i = 0; i < 5; i++) {
             title[i].innerHTML = ``;
-            url[i].innerHTML = ``;
-            body[i].innerHTML = ``;
-            link[i].innerHTML = ``;
+
         }
         //fetch
 
         try {
+
             const res = await fetch(`/search?question=${quest}`, {
                 method: "GET"
             });
             const data = await res.json();
-            var cnt=1;
-            loadingdiv.innerHTML = ``;
+            var cnt = 1;
+
             for (i = 0; i < 5; i++) {
-                if(data[i].url === ``){
+                if (data[i].url === ``) {
 
                 }
-                else{
+                else {
+                    // loadingdiv.innerHTML = ``;
+                    loadingdiv[0].innerHTML = ``;
+
                     title[i].innerHTML = `<a target="_blank" href="${data[i].url}" > Problem ${cnt} : ${data[i].title}</a>`;
                     cnt++;
                 }
-                
+
                 // url[i].innerHTML= `<h3>${data[i].url}</h3>`;
                 // link[i].innerHTML= `<a target="_blank" href="${data[i].url}" > click here baby</a>`;
                 // body[i].innerHTML= `${data[i].body}`;
             }
+            if(cnt===1){
+                loadingdiv[0].innerHTML = `<h3>Sorry! query not found in database</h3>`;
+            }
         } catch (error) {
+            // loadingdiv[0].innerHTML = `<h3>Sorry! query not found in database</h3>`;
+
             alert(error);
         }
     });
