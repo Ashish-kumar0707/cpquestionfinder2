@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CPQF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <!-- <script src="engine.js" charset="utf-8"></script> -->
 </head>
@@ -78,7 +79,7 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const quest = qelment.value;
-        loadingdiv[0].innerHTML = `<h3>Loading......</h3>`;
+        loadingdiv[0].innerHTML = `<h3><i class="fa fa-refresh fa-spin"></i> Loading</h3>`;
         // loadingdiv[0].innerHTML = `<a target="_blank" href=""> Problem : </a>`;
         for (i = 0; i < 5; i++) {
             title[i].innerHTML = ``;
