@@ -43,7 +43,7 @@ app.get("/search",(req,res)=>{
     var input = quest;
     
     // tfidf similarity calculating
-    for (var i = 0; i < 500; i++) //3429
+    for (var i = 0; i < 990; i++) //3429
     {
         similarity[i] = tf_idf.calculateSimilarityIndex(input, tf_idf.corpus[i]);
     }
